@@ -1,0 +1,11 @@
+FROM python:3.8-slim AS base
+WORKDIR /src
+COPY . .
+RUN pip install -r requirements.txt
+
+FROM base as dev
+ENTRYPOINT [ "python", "-m", "app.main" ]
+
+FROM base as test
+RUN pip install pytest, pytest-aiohttp, pytest-asyncio
+RUN python -m pytest

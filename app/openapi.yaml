@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: My API
+  description: Reverse a string
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/myapi
+paths:
+  /reverse:
+    post:
+      summary: Reverse a string
+      operationId: reverse # This is the name of the function in the handler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                string:
+                  type: string
+      responses:
+        200:
+          description: The reversed string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  string:
+                    type: string
